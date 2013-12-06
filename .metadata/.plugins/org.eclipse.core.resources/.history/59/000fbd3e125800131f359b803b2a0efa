@@ -1,0 +1,19 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import threading
+import client
+class MyThread(threading.Thread):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def Start(self):
+          pass

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="32" version="2.0">
+<workbenchAdvisor/>
+<window height="769" maximized="true" width="1022" x="381" y="41">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="132" y="30"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="com.python.pydev.navigate.actionSet" itemType="typeToolBarContribution" x="40" y="30"/>
+<coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="40" y="30"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="120" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="48" y="30"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1385626996194" focus="true" label="Workspace - PyDev">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="org.python.pydev.editor.PythonEditor" name="PackDefine.py" partName="PackDefine" path="/home/potal/workspace/miku_test/com/miku_test/PackDefine.py" title="PackDefine" tooltip="miku_test/com/miku_test/PackDefine.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/miku_test/com/miku_test/PackDefine.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11936" selectionTopPixel="5294"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="miku.py" partName="miku" path="/home/potal/workspace/miku_test/com/miku_test/miku.py" title="miku" tooltip="miku_test/com/miku_test/miku.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/miku_test/com/miku_test/miku.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4267" selectionTopPixel="2233"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="utils.py" partName="utils" path="/home/potal/workspace/miku_test/com/miku_test/utils.py" title="utils" tooltip="miku_test/com/miku_test/utils.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/miku_test/com/miku_test/utils.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="97" selectionTopPixel="0"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="mikuktv.py" partName="mikuktv" path="/home/potal/workspace/miku_test/com/miku_test/mikuktv.py" title="mikuktv" tooltip="miku_test/com/miku_test/mikuktv.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/miku_test/com/miku_test/mikuktv.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10642" selectionTopPixel="5282"/>
+</editor>
+<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="testcase1.py" partName="testcase1" path="/home/potal/workspace/miku_test/com/miku_test/testcase1.py" title="testcase1" tooltip="miku_test/com/miku_test/testcase1.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/miku_test/com/miku_test/testcase1.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4585" selectionTopPixel="2644"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="0" org.eclipse.ui.ide.descriptionField="0" org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.priorityField="0" org.eclipse.ui.ide.resourceField="0"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+<view id="org.python.pydev.navigator.view" partName="PyDev Package Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
+<expanded IMemento.internal.id="/home/potal/workspace/miku_test"/>
+<expanded IMemento.internal.id="/home/potal/workspace/miku_test/com"/>
+<selected IMemento.internal.id="/home/potal/workspace/miku_test"/>
+</viewState>
+</view>
+</views>
+<perspectives activePart="org.python.pydev.editor.PythonEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="org.eclipse.ui.views.BookmarkView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ProgressView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+<perspective_action id="org.eclipse.team.cvs.ui.cvsPerspective"/>
+<perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<fastViewBars/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@138b017" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottomRight" ratio="0.7162726" ratioLeft="515" ratioRight="204" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="bottomLeft" ratio="0.6258693" ratioLeft="450" ratioRight="269" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.python.pydev.ui.perspective.PythonPerspectiveFactory" id="org.python.pydev.ui.PythonPerspective" label="PyDev"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="com.python.pydev.navigate.actionSet"/>
+<show_view_action id="org.python.pydev.views.PyCodeCoverageView"/>
+<show_view_action id="org.python.pydev.navigator.view"/>
+<show_view_action id="org.python.pydev.debug.pyunit.pyUnitView"/>
+<show_view_action id="org.eclipse.search.ui.views.SearchView"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.project.PythonProjectWizard"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.files.PythonSourceFolderWizard"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.files.PythonPackageWizard"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.files.PythonModuleWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.python.pydev.navigator.view"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.python.pydev.navigator.view" appearance="2" expanded="2">
+<page content="org.python.pydev.navigator.view" label="PyDev Package Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.23138034" ratioLeft="233" ratioRight="774" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.6411683" ratioLeft="461" ratioRight="258" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/miku_test/com/miku_test/mikuktv.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/miku_test/com/miku_test/PackDefine.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/miku_test/com/miku_test/utils.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/miku_test/com/miku_test/miku.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/miku_test/com/miku_test/testcase1.py"/>
+</editors>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="3574" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1286" y="0"/>
+</item>
+<item historyLabel="miku" index="3">
+<position info="not_deleted" x="4684" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1286" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="5031" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1286" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="5852" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1100" y="17"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="6102" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1975" y="17"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="6102" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1945" y="11"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="5167" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1931" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4820" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1360" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4820" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1775" y="39"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1848" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4820" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="5167" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4212" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="4920" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4075" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1848" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="4920" y="0"/>
+</item>
+<item historyLabel="utils" index="2">
+<position info="not_deleted" x="97" y="0"/>
+</item>
+<item historyLabel="miku" index="3">
+<position info="not_deleted" x="4185" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="4920" y="0"/>
+</item>
+<item historyLabel="miku" index="3">
+<position info="not_deleted" x="4267" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="6385" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="1848" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="12581" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="6385" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="10679" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="12581" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4680" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="7040" y="16"/>
+</item>
+<item historyLabel="miku" index="3">
+<position info="not_deleted" x="4267" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4680" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="8343" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4680" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="8144" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4555" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="10642" y="0"/>
+</item>
+<item historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4760" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="10642" y="0"/>
+</item>
+<item historyLabel="PackDefine" index="1">
+<position info="not_deleted" x="11936" y="0"/>
+</item>
+<item historyLabel="mikuktv" index="0">
+<position info="not_deleted" x="10642" y="0"/>
+</item>
+<item active="true" historyLabel="testcase1" index="4">
+<position info="not_deleted" x="4760" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="wintypes.py" tooltip="/usr/lib/python2.6/ctypes/wintypes.py">
+<persistable uri="file:/usr/lib/python2.6/ctypes/wintypes.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="testcase1.py" tooltip="miku_test/com/miku_test/testcase1.py">
+<persistable path="/miku_test/com/miku_test/testcase1.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="mikuktv.py" tooltip="miku_test/com/miku_test/mikuktv.py">
+<persistable path="/miku_test/com/miku_test/mikuktv.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="utils.py" tooltip="miku_test/com/miku_test/utils.py">
+<persistable path="/miku_test/com/miku_test/utils.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="miku.py" tooltip="miku_test/com/miku_test/miku.py">
+<persistable path="/miku_test/com/miku_test/miku.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="PackDefine.py" tooltip="miku_test/com/miku_test/PackDefine.py">
+<persistable path="/miku_test/com/miku_test/PackDefine.py"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="miku.py" tooltip="/home/potal/test/py_mikuktv/miku.py">
+<persistable uri="file:/home/potal/test/py_mikuktv/miku.py"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="mikupackdef.py" tooltip="/home/potal/test/py_mikuktv/mikupackdef.py">
+<persistable uri="file:/home/potal/test/py_mikuktv/mikupackdef.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="serialize.py" tooltip="python_test/com/pack/serialize.py">
+<persistable path="/python_test/com/pack/serialize.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="GiveGift.py" tooltip="python_test/com/pack/GiveGift.py">
+<persistable path="/python_test/com/pack/GiveGift.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="test.py" tooltip="python_test/com/pack/test.py">
+<persistable path="/python_test/com/pack/test.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="mythread.py" tooltip="python_test/com/pack/mythread.py">
+<persistable path="/python_test/com/pack/mythread.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="client.py" tooltip="python_test/com/pack/client.py">
+<persistable path="/python_test/com/pack/client.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="baseclass.py" tooltip="python_test/com/pack/baseclass.py">
+<persistable path="/python_test/com/pack/baseclass.py"/>
+</file>
+</mruList>
+</workbench>

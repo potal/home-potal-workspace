@@ -1,0 +1,40 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import basecommand
+import struct
+class LoginRoomRS(basecommand.BaseCommand()):
+    '''
+    classdocs
+    '''
+
+    def __init__(self):
+        BYTE            mbyResult;
+    __int64            mi64UserId;
+    long            mlRoomID;
+    char            macErrInfo[ERR_BUF_LEN + 1];
+    char            mszVoiceIp[IP_ADDRESS_LEN];
+    WORD            musVoicePort;
+
+    int             miUserPopdom;
+    int             miRole;
+    int             miRoleLevel;
+
+    __int64         mi64Score;
+    __int64         mi64CUMoney;
+    int                miManageType;
+    long            mlCityType;
+    char            mszSealUID[MAX_UID_LEN];
+    char            macReserved[USER_NAME_LEN];
+    long            mlRoomType;
+
+    char            mszUserGrade[MAX_UID_LEN];
+    
+    int                miCountEffects;
+    self.mpUserEffects;
+    
+    def Execute(self,msg_id,buff,buff_len):
+        pass;
+        

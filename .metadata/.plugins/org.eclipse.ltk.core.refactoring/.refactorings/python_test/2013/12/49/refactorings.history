@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;python_test/com/pack/LoginRoomRS.py&apos; to &apos;LoginRoom.py&apos;" description="Rename resource &apos;LoginRoomRS.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="com/pack/LoginRoomRS.py" name="LoginRoom.py" stamp="1386060275995" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;python_test/com/pack/chatmessage.py&apos; to &apos;ChatMessage.py&apos;" description="Rename resource &apos;chatmessage.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="com/pack/chatmessage.py" name="ChatMessage.py" stamp="1386061630315" updateReferences="true"/>
+</session>

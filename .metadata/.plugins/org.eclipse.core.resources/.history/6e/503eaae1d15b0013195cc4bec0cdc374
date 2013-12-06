@@ -1,0 +1,79 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+#import pickle
+import struct
+import baseclass
+import serialize
+
+class ChatMessage():
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,client):
+        '''
+        Constructor
+        self.room_id = room_id;
+        self.user_id = user_id;
+        '''
+        self.client = client;
+        
+        self.mwMsgID = 6005;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DestUserId = 0;
+        self.mbPrivate = 0;
+        self.miResult = 0;
+        self.miCount = 0;
+        self.mszText = '';
+        self.mlReserved = 0;
+        
+    def Pack(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        self.mwMsgID = 6005;
+        self.mlRoomId = room_id;
+        self.mi64UserId = user_id;
+        self.mi64DestUserId = user_talk_to;
+        self.mbPrivate = is_private;
+        self.miResult = 1;
+        self.miCount = len(msg_text);
+        self.mszText = msg_text;
+        self.mlReserved = 0;
+        
+#        pack_fmt = '<hlqq?llh{0}sl'.format(self.miCount);
+        
+#        packet_body = struct.pack(pack_fmt,mwMsgID,mlRoomId,mi64UserId,mi64DestUserId,mbPrivate,miResult,miCount,len(mszText),mszText,mlReserved);
+
+        packed_data = serialize.CSerialize('',0,1);
+        packed_data.SerializeWord(self.mwMsgID);
+        packed_data.SerializeLong(self.mlRoomId);
+        packed_data.SerializeLongLong(self.mi64UserId);
+        packed_data.SerializeLongLong(self.mi64DestUserId);
+        packed_data.SerializeByte(self.mbPrivate);
+        packed_data.Serializeinteger(self.miResult);
+        packed_data.Serializeinteger(self.miCount);
+        packed_data.SerializeString(self.mszText);
+        packed_data.SerializeLong(self.mlReserved);
+
+
+        base_class = baseclass.BaseClass();
+        
+        return base_class.Pack(packed_data.buff, len(packed_data.buff));
+    
+    def SendMessage(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        return self.Pack(room_id, user_id, msg_text, user_talk_to, is_private);
+    
+    def Unpack(self,buff,buff_len):
+        unpacked_data = serialize.CSerialize(buff,buff_len,2);
+        
+        pass;
+    
+    def Execute(self,msg_id,buff,buff_len):
+         print 'ChatMessage Execute';
+         self.Unpack(buff, buff_len);
+         
+#         self.mi64UserId = 1;
+        pass;

@@ -1,0 +1,18 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import basecommand
+import struct
+class LoginRoomRS(basecommand.BaseCommand()):
+    '''
+    classdocs
+    '''
+
+    def __init__(self):
+        pass
+    
+    def Execute(self,msg_id,buff,buff_len):
+        struct.
+        

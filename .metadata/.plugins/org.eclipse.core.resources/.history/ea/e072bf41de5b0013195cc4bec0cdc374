@@ -1,0 +1,108 @@
+'''
+Created on Dec 3, 2013
+
+@author: potal
+'''
+import serialize
+import baseclass
+
+class GiveGiftRQ(object):
+
+
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6044;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DstUserId = 0;
+        self.mszHeroUID = '';
+        self.mszUserName = '';
+        self.mszDstUserName = '';
+
+        self.mszMsgUtf8 = '';
+
+        self.mszGiftUID = '';
+        self.miContractId = 0;
+        self.miBegin = 0;
+        self.miCount = 0;
+        self.miTotal = 0;
+        self.miReserved = 0;
+        
+    def Pack(self):
+        packed_data = serialize.CSerialize('',0,1);
+        
+        packed_data.SerializeWord(self.mwMsgID);
+        packed_data.SerializeLong(self.mlRoomId);
+        packed_data.SerializeLongLong(self.mi64UserId);
+        packed_data.SerializeLongLong(self.mi64DestUserId);
+        packed_data.SerializeString(self.mszHeroUID);
+        packed_data.SerializeString(self.mszUserName);
+        packed_data.SerializeString(self.mszDstUserName);
+        packed_data.SerializeString(self.mszMsgUtf8);
+        packed_data.SerializeString(self.mszGiftUID);
+        packed_data.SerializeInteger(self.miContractId);
+        packed_data.SerializeInteger(self.miBegin);
+        packed_data.SerializeInteger(self.miCount);
+        packed_data.SerializeInteger(self.miTotal);
+        packed_data.SerializeInteger(self.miReserved);
+
+        base_class = baseclass.BaseClass();
+        
+        return base_class.Pack(packed_data.buff, len(packed_data.buff));
+        
+class GiveGiftRS(object):
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6045;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DstUserId = 0;
+        self.mszUserName = '';
+        self.mszDstUserName = '';
+        self.mszMsgUtf8 = '';
+        self.mszGiftUID = '';
+        self.mwGiftType = 0;
+        self.miResult = 0;
+        self.mi64ContractId = 0;
+        self.miBegin = 0;
+        self.miCount = 0;
+        self.miTotal = 0;
+        self.mi64LeftPoints = 0;
+        self.mi64LeftGolden = 0;
+        self.mi64PaidGolden = 0;
+        self.mi64PaidPoints = 0;
+        self.mi64DstLeftPoints = 0;
+        self.mi64DstLeftGolden = 0;
+        self.mi64DstGotPoints = 0;
+        self.mi64DstGotGolden = 0;
+        self.mi64LuckyGolden = 0;
+        self.miDisplayPlace = 0;
+        self.mlGiftCount = 0;
+        self.mlTime = 0;
+        
+    def Unpack(self,buff,buff_len):
+        unpacked_data = serialize.CSerialize(buff,buff_len,2);
+        
+        self.mwMsgID = unpacked_data.SerializeWord(self.mwMsgID);
+        self.mlRoomId = unpacked_data.SerializeLong(self.mlRoomId);
+        self.mi64UserId = unpacked_data.SerializeLongLong(self.mi64UserId);
+        self.mi64DstUserId = unpacked_data.SerializeLong(self.mlRoomID);
+        self.mszUserName = unpacked_data.SerializeString(self.mszErrInfo);
+        self.mszDstUserName = unpacked_data.SerializeString(self.mszVoiceIp);
+        self.mszMsgUtf8 = unpacked_data.SerializeWord(self.mwMsgID);
+        self.mszGiftUID = unpacked_data.SerializeInteger(self.miUserPopdom);
+        self.mwGiftType = unpacked_data.SerializeInteger(self.miRole);
+        self.miResult = unpacked_data.SerializeInteger(self.miRoleLevel);
+        self.mi64ContractId = unpacked_data.SerializeLongLong(self.mi64Score);
+        self.miBegin = unpacked_data.SerializeLongLong(self.mi64CUMoney);
+        self.miCount = unpacked_data.SerializeInteger(self.miManageType);
+        self.miTotal = unpacked_data.SerializeLong(self.mlCityType);
+        self.mi64LeftPoints = unpacked_data.SerializeLongLong(self.mszSealUID);
+        self.mi64LeftGolden = unpacked_data.SerializeLongLong(self.mszReserved);
+        self.mi64PaidGolden = unpacked_data.SerializeLongLong(self.mlRoomType);
+        self.mi64PaidPoints = unpacked_data.SerializeLongLong(self.mszUserGrade);
+        self.mi64DstLeftPoints = unpacked_data.SerializeLongLong(self.miCountEffects);
+    
+        

@@ -1,0 +1,30 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import struct
+class CSerialize(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,serialize_type):
+        '''
+        Constructor
+        '''
+        self.type_ = serialize_type;
+        self.buff = '';
+        
+    def Serialize(self,value):
+        if self.type_ == 1:#存储
+            self.buff += struct.pack('<i',value);
+            return len(self.buff);
+        else:
+            data = struct.unpack('<i',self.buff);
+            return data[0];
+    
+    
+    
+    

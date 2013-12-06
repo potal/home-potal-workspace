@@ -1,0 +1,84 @@
+'''
+Created on Dec 3, 2013
+
+@author: potal
+'''
+import serialize
+import baseclass
+
+class GiveGiftRQ(object):
+
+
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6044;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DstUserId = 0;
+        self.mszHeroUID = '';
+        self.mszUserName = '';
+        self.mszDstUserName = '';
+
+        self.mszMsgUtf8 = '';
+
+        self.mszGiftUID = '';
+        self.miContractId = 0;
+        self.miBegin = 0;
+        self.miCount = 0;
+        self.miTotal = 0;
+        self.miReserved = 0;
+        
+    def Pack(self):
+        packed_data = serialize.CSerialize('',0,1);
+        
+        packed_data.SerializeWord(self.mwMsgID);
+        packed_data.SerializeLong(self.mlRoomId);
+        packed_data.SerializeLongLong(self.mi64UserId);
+        packed_data.SerializeLongLong(self.mi64DestUserId);
+        packed_data.SerializeString(self.mszHeroUID);
+        packed_data.SerializeString(self.mszUserName);
+        packed_data.SerializeInteger(self.miCount);
+        packed_data.SerializeString(self.mszText);
+        packed_data.SerializeLong(self.mlReserved);
+
+        base_class = baseclass.BaseClass();
+        
+        return base_class.Pack(packed_data.buff, len(packed_data.buff));
+        
+class GiveGiftRS(object):
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6045;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DstUserId = 0;
+        self.mszUserName = '';
+        self.mszDstUserName = '';
+
+        self.mszMsgUtf8 = '';
+        self.mszGiftUID = '';
+        self.mwGiftType = 0;
+        self.miResult = 0;
+
+        self.mi64ContractId = 0;
+        self.miBegin = 0;
+        self.miCount = 0;
+        self.miTotal = 0;
+        self.mi64LeftPoints = 0;
+        self.mi64LeftGolden = 0;
+        self.mi64PaidGolden = 0;
+        self.mi64PaidPoints = 0;
+
+        self.mi64DstLeftPoints = 0;
+        self.mi64DstLeftGolden = 0;
+        self.mi64DstGotPoints = 0;
+        self.mi64DstGotGolden = 0;
+        self.mi64LuckyGolden = 0;
+    
+        self.miDisplayPlace = 0;
+        self.mlGiftCount = 0;
+        self.mlTime = 0;
+    
+        

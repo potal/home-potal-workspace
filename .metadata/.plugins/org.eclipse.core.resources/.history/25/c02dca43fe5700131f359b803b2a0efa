@@ -1,0 +1,38 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import baseclass
+import struct
+
+class LoginRoom(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def Pack(self,room_id,user_id,password,nick_name=''):
+        mwTypeID = 6001 
+        macVersion = "500"
+        mlRoomID = mlHallID
+        mi64UserId = 90019  #bigint
+        macNickName = "sean_python" #NICK_NAME_LEN + 1 20+1
+        mwPhotoNum = 0
+        macPassword= ""             #UC_HALL_PWD_LEN + 1 128+1
+        mbySource = 0
+        mlUserState = 0
+        macUserPwd = hashlib.md5("sean999999").hexdigest()   #MD5_LEN + 1  32+1
+        mbyUserLanguage = 0
+        mszPhotoUID = ""
+        mszMacAddr = ""
+        mszMCode = ""
+        mszAccountUID =""
+    
+    def LoginRoom(self,room_id,user_id,password,nick_name=''):
+        self.Pack(room_id,user_id,password,nick_name);
+        

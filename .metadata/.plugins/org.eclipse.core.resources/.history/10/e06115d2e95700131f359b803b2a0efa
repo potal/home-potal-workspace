@@ -1,0 +1,17 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import baseclass
+class MyClass(baseclass.BaseClass):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        

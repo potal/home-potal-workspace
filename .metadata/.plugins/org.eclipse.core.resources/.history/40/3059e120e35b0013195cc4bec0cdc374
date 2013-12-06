@@ -1,0 +1,88 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+#import pickle
+import time
+import baseclass
+import serialize
+
+class ChatMessage():
+
+    def __init__(self,client):
+        self.client = client;
+        self.state = False;
+        
+        self.mwMsgID = 6005;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DestUserId = 0;
+        self.mbPrivate = 0;
+        self.miResult = 0;
+        self.miCount = 0;
+        self.mszText = '';
+        self.mlReserved = 0;
+        
+    def Pack(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        self.mwMsgID = 6005;
+        self.mlRoomId = room_id;
+        self.mi64UserId = user_id;
+        self.mi64DestUserId = user_talk_to;
+        self.mbPrivate = is_private;
+        self.miResult = 1;
+        self.miCount = len(msg_text)+1;
+        self.mszText = msg_text;
+        self.mlReserved = 0;
+        
+        packed_data = serialize.CSerialize('',0,1);
+        
+        packed_data.SerializeWord(self.mwMsgID);
+        packed_data.SerializeLong(self.mlRoomId);
+        packed_data.SerializeLongLong(self.mi64UserId);
+        packed_data.SerializeLongLong(self.mi64DestUserId);
+        packed_data.SerializeByte(self.mbPrivate);
+        packed_data.SerializeInteger(self.miResult);
+        packed_data.SerializeInteger(self.miCount);
+        packed_data.SerializeString(self.mszText);
+        packed_data.SerializeLong(self.mlReserved);
+
+        base_class = baseclass.BaseClass();
+        
+        return base_class.Pack(packed_data.buff, len(packed_data.buff));
+    
+    def SendMessage(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        self.Pack(room_id, user_id, msg_text, user_talk_to, is_private);
+        
+        count_time = 0;
+        while True:
+            time.sleep(1);
+            if self.Verify() == True:
+                return True;
+            count_time += 1;
+            if count_time == 3 and self.Verify() == False:
+                return False;
+    
+    def Unpack(self,buff,buff_len):
+        unpacked_data = serialize.CSerialize(buff,buff_len,2);
+        self.mwMsgID=unpacked_data.SerializeWord(self.mwMsgID);
+        self.mlRoomId=unpacked_data.SerializeLong(self.mlRoomId);
+        self.mi64UserId=unpacked_data.SerializeLongLong(self.mi64UserId);
+        self.mi64DestUserId=unpacked_data.SerializeLongLong(self.mi64DestUserId);
+        self.mbPrivate=unpacked_data.SerializeByte(self.mbPrivate);
+        self.miResult=unpacked_data.SerializeInteger(self.miResult);
+        self.miCount=unpacked_data.SerializeInteger(self.miCount);
+        self.mszText=unpacked_data.SerializeString(self.mszText);
+        self.mlReserved = unpacked_data.SerializeLong(self.mlReserved);
+        pass;
+    
+    def Execute(self,msg_id,buff,buff_len):
+#        print 'ChatMessage Execute';
+        self.Unpack(buff, buff_len);
+        if self.mi64UserId == self.client.user_id:
+            print self.mszText;
+            self.state = True;
+        print '{0} said to {1}:{2}'.format(self.mi64UserId,self.mi64DestUserId,self.mszText);
+            
+    def Verify(self):
+        return self.state;

@@ -1,0 +1,23 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+
+import connection
+import baseclass
+
+
+class Client(object):
+    '''
+    classdocs
+    '''
+
+    def __init__(self,server_addr,server_port):
+        '''
+        Constructor
+        '''
+        self.my_connection = connection.MyConnection();
+        my_connection.ConnectServer(server_addr, server_port);
+    def Close(self):
+        my_connection.Close();

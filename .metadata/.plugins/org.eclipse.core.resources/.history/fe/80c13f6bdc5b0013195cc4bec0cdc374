@@ -1,0 +1,36 @@
+'''
+Created on Dec 3, 2013
+
+@author: potal
+'''
+
+class GiveGiftRQ(object):
+
+
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6044;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DstUserId = 0;
+        self.mszHeroUID = '';
+        self.mszUserName = '';
+        self.mszDstUserName = '';
+
+        self.mszMsgUtf8 = '';
+
+        self.mszGiftUID = '';
+        self.miContractId = 0;
+        self.miBegin = 0;
+        self.miCount = 0;
+        self.miTotal = 0;
+        self.miReserved = 0;
+        
+        
+class GiveGiftRS(object):
+    def __init__(self,client):
+        self.client = client;
+        
+    
+        

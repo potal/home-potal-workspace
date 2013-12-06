@@ -1,0 +1,14 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import basecommand
+class LoginRoomRS(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        

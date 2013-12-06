@@ -1,0 +1,17 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import threading
+class MyThread(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(selfparams):
+        '''
+        Constructor
+        '''
+        

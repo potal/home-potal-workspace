@@ -1,0 +1,85 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+
+import connection
+import loginroom
+import baseclass
+import chatmessage
+import threading
+import mythread
+import struct
+from utils import helper
+
+class Client(object):
+
+    def __init__(self,server_addr,server_port):
+        self.mutex = threading.Lock();
+        self.buff = '';
+        self.is_running = True;
+        self.my_connection = connection.MyConnection();
+        self.my_connection.ConnectServer(server_addr, server_port);
+        self.my_base_class = baseclass.BaseClass();
+        self.my_base_class.SetSocket(self.my_connection.s);
+        self.recv_thread = mythread.MyThread();
+        self.recv_thread.SetSocket(self.my_connection.s,self);
+        self.recv_thread.start();
+        
+    def RecvThread(self):
+        while(self.is_running):
+            buff = self.my_connection.s.recv(1024);
+            if len(buff) != 0:
+                self.recv_buff += buff;
+                
+    def Close(self):
+        self.is_running = False;
+        self.my_connection.Close();
+        self.recv_thread.Close();
+        
+    def AnalyseTcpStoreBuffer(self):
+        s = struct.unpack('<3sh?h',self.buff[0:8]);
+        msg_fmt = '<3sh?h{0}s3sh'.format(s[1]);
+        unpacked_data = struct.unpack(msg_fmt,self.buff[0:13+s[1]]);
+#        print repr(unpacked_data[0]),repr(unpacked_data[5]),repr(unpacked_data[4]);
+        buff = unpacked_data[4];
+        '''
+         and cmp(repr(unpacked_data[5]),'\x04\x05\x06') == 0
+        '''
+        header = '\x01\x02\x03';
+        print cmp(repr(unpacked_data[0]),header);
+        print repr(unpacked_data[0]),header;
+        if cmp(repr(unpacked_data[0]),'\x01\x02\x03') == 0:
+            print 'good package';
+        return buff;
+    
+    def DispatchMsg(self,user_data):
+        pass
+        
+    def DealWithRecvPackage(self,recv_buff):
+#        while True:
+        if self.mutex.acquire():
+            self.buff += recv_buff;
+            buff = self.AnalyseTcpStoreBuffer();
+            if len(buff) == 0:
+                self.mutex.release();
+                return 0;
+            else:
+                user_data = helper().xor_crypt_string(buff);
+                self.DispatchMsg(user_data);
+            self.mutex.release();
+        return 0;
+        
+    def LoginRoom(self,room_id,user_id,password,nick_name=''):
+        self.room_id = room_id;
+        self.user_id = user_id;
+        self.user_login = loginroom.LoginRoom();
+        self.user_login.LoginRoom(room_id, user_id, password, nick_name);
+        
+    def ChatMessage(self,msg_text,user_talk_to = 0,is_private = False):
+        chat_msg = chatmessage.ChatMessage();
+        chat_msg.SendMessage(self.room_id,self.user_id,msg_text,user_talk_to,is_private);
+        
+        
+        

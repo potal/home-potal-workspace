@@ -1,0 +1,68 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+
+import connection
+import loginroom
+import baseclass
+import chatmessage
+import threading
+import mythread
+
+class Client(object):
+
+    def __init__(self,server_addr,server_port):
+        self.mutex = threading.Lock();
+        self.buff = '';
+        self.is_running = True;
+        self.my_connection = connection.MyConnection();
+        self.my_connection.ConnectServer(server_addr, server_port);
+        self.my_base_class = baseclass.BaseClass();
+        self.my_base_class.SetSocket(self.my_connection.s);
+        self.recv_thread = mythread.MyThread();
+        self.recv_thread.SetSocket(self.my_connection.s,self);
+        self.recv_thread.start();
+        
+    def RecvThread(self):
+        while(self.is_running):
+            buff = self.my_connection.s.recv(1024);
+            if len(buff) != 0:
+                self.recv_buff += buff;
+                
+    def Close(self):
+        self.is_running = False;
+        self.my_connection.Close();
+        self.recv_thread.Close();
+        
+    def AnalyseTcpStoreBuffer(self):
+        buff = self.buff[0:3];
+        print buff;
+        return 0;
+        
+    def DealWithRecvPackage(self,recv_buff):
+        if self.mutex.acquire():
+            self.buff += recv_buff;
+            print buff;
+            buff = self.AnalyseTcpStoreBuffer();
+            if len(buff) == 0:
+                self.mutex.release();
+                return 0;
+            else:
+                user_data = '';
+        self.mutex.release();
+        return 0;
+        
+    def LoginRoom(self,room_id,user_id,password,nick_name=''):
+        self.room_id = room_id;
+        self.user_id = user_id;
+        self.user_login = loginroom.LoginRoom();
+        self.user_login.LoginRoom(room_id, user_id, password, nick_name);
+        
+    def ChatMessage(self,msg_text,user_talk_to = 0,is_private = False):
+        chat_msg = chatmessage.ChatMessage();
+        chat_msg.SendMessage(self.room_id,self.user_id,msg_text,user_talk_to,is_private);
+        
+        
+        

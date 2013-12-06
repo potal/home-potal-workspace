@@ -1,0 +1,48 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+#import pickle
+import struct
+import baseclass
+
+class ChatMessage():
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        self.room_id = room_id;
+        self.user_id = user_id;
+        '''
+        
+    def Pack(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        '''
+        f = file("log.txt",'w');
+        pickle.dump(self,f);
+        f.close();
+        '''
+        mwMsgID = 6005;
+        mlRoomId = room_id;
+        mi64UserId = user_id;
+        mi64DestUserId = user_talk_to;
+        mbPrivate = is_private;
+        miResult = 1;
+        miCount = len(msg_text);
+        mszText = msg_text;
+        mlReserved = 0;
+        
+        pack_fmt = '<hlqq?ll{0}sl'.format(miCount);
+        
+        packet_body = struct.pack(pack_fmt,mwMsgID,mlRoomId,mi64UserId,mi64DestUserId,mbPrivate,miResult,miCount,mszText,mlReserved);
+
+        base_class = baseclass.BaseClass();
+        
+        return base_class.Pack(packet_body, len(packet_body));
+    
+    def SendMessage(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        self.Pack(room_id, user_id, msg_text, user_talk_to, is_private)

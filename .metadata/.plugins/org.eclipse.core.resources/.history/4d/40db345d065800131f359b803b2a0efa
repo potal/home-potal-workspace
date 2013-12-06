@@ -1,0 +1,38 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import struct
+from utils import helper
+
+class BaseClass(object):
+    '''
+    classdocs
+    '''
+    client_sock = 0;
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def SetSocket(self,sock):
+        BaseClass.client_sock = sock;
+        
+    def Pack(self,input_buff,buff_len):
+        msg_encoded = helper().xor_crypt_string(input_buff);
+        packet_header = struct.pack('<BBB',1,2,3);
+        packet_tail = struct.pack('<BBB',4,5,6);
+        msg_fmt = '<3sh?hh{0}s3sh'.format(len(msg_encoded));
+        msg_send = struct.pack(msg_fmt,packet_header,packet_tail);
+        print repr(packet_header),len(packet_header);
+        print repr(packet_tail),len(packet_tail);
+        print repr(msg_send),len(msg_send);
+        
+    def SendPackage(self):
+        if BaseClass.client_sock != 0:
+            BaseClass.client_sock.send(self.package,self.pack_len);
+            return True;
+        else:
+            return False;
+        

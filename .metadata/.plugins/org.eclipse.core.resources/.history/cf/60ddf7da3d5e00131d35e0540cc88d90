@@ -1,0 +1,366 @@
+#coding=utf-8
+'''
+Created on Nov 28, 2013
+
+@author: mmiku
+'''
+import hashlib
+import mikupackdef
+import miku
+import time
+import PackDefine
+
+class mikuktv(miku.MikuBase):
+    '''
+    测试登录房间
+    ''' 
+    def EnterRoom(self,userid,userpwd,username):
+        self.ClearMsgList()
+        stulogin = mikupackdef.STRU_CL_CRS_LOGIN_ROOM_RQ()
+        stulogin.macVersion = "500"
+        stulogin.mlRoomID = 0
+        stulogin.mi64UserId = userid
+        stulogin.macNickName = username
+        stulogin.macUserPwd = hashlib.md5(userpwd).hexdigest()
+        msg_body = stulogin.Pack()
+        
+        self.SendPacket(msg_body)
+        self.mi64UserId = userid
+        
+        #等待返回结果
+        (result,msg) = self.Waitfor(6013,3)
+        #处理返回结果
+        if(result):
+            stuLoginrs = mikupackdef.STRU_CL_CRS_LOGIN_ROOM_RS_LE()
+            stuLoginrs.UnPack(msg)
+            self.mlRoomId = stuLoginrs.mlRoomID
+            self.mi64Score = stuLoginrs.mi64Score
+            self.mi64CUMoney = stuLoginrs.mi64CUMoney
+            return result, stuLoginrs.mbyResult
+        else:
+            return result,""
+
+    '''
+    测试发言
+    ''' 
+    def SendMsg(self,dstuserid,strmsg):
+        stutestmsg = mikupackdef.STRU_CL_CRS_MESSAGE_ID()
+        stutestmsg.mlRoomId = self.mlRoomId;
+        stutestmsg.mi64UserId = self.mi64UserId
+        stutestmsg.mi64DestUserId = dstuserid
+        stutestmsg.miCount = len(strmsg)+1
+        stutestmsg.macText = strmsg
+        msg_body = stutestmsg.Pack()
+        self.SendPacket(msg_body)
+        
+        return self.RecvMsg(self.mi64UserId,0,"")
+    
+    '''
+    测试接收发言
+    ''' 
+    def RecvMsg(self,srcuserid,dstuserid,strmsg):
+        recvtimeout = 3
+        starttime = time.time()
+        while(1):
+            if((time.time()-starttime) > recvtimeout):
+                break
+            
+            (result,msg) = self.Waitfor(6005,1)
+            if(result):
+                stutestmsgrs = mikupackdef.STRU_CL_CRS_MESSAGE_ID()
+                stutestmsgrs.UnPack(msg)
+                if((stutestmsgrs.mi64UserId == srcuserid or 0 == srcuserid) and (stutestmsgrs.mi64DestUserId == dstuserid or 0 == dstuserid) and (0 == len(strmsg) or 0 == cmp(stutestmsgrs.macText,strmsg))):
+                    return True,stutestmsgrs.miResult,stutestmsgrs.mi64UserId,stutestmsgrs.mi64DestUserId,stutestmsgrs.mbPrivate,stutestmsgrs.macText
+                
+        return False,0,0,0,0,""
+    
+    '''
+    测试送礼
+    ''' 
+    def SendGift(self,dstuserid,strgiftid,iCount):
+        self.ClearMsgList()
+        stutestmsg = mikupackdef.STRU_CL_CRS_GIVE_GIFT_RQ()
+        stutestmsg.mlRoomId = self.mlRoomId;
+        stutestmsg.mi64UserId = self.mi64UserId
+        stutestmsg.mi64DestUserId = dstuserid
+        stutestmsg.miCount = iCount
+        stutestmsg.mszGiftUID = strgiftid
+        msg_body = stutestmsg.Pack()
+
+        self.SendPacket(msg_body)
+        
+        return self.RecvGift(self.mi64UserId,0,"")
+
+    '''
+    测试收礼
+    ''' 
+    def RecvGift(self,userid,dstuserid,giftid):
+        statrttime = time.time()
+        recvtimeout = 3
+        while(1):
+            if((time.time()-statrttime) > recvtimeout):
+                break
+            
+            (result,msg) = self.Waitfor(6045,1)
+            if(result):
+                stugiftrs = mikupackdef.STRU_CL_CRS_GIVE_GIFT_RS()
+                stugiftrs.UnPack(msg)
+                if(stugiftrs.mi64UserId == self.mi64UserId and 1 == stugiftrs.miResult):
+                    self.mi64CUMoney = stugiftrs.mi64LeftGolden
+                    self.mi64Score = stugiftrs.mi64LeftPoints
+                    
+                if(stugiftrs.mi64DestUserId == self.mi64UserId and 1 == stugiftrs.miResult):
+                    self.mi64CUMoney = stugiftrs.mi64DstLeftGolden
+                    self.mi64Score = stugiftrs.mi64DstLeftPoints
+
+                if((stugiftrs.mi64UserId == userid or 0 == userid) and (stugiftrs.mi64DestUserId == dstuserid or 0 == dstuserid) and (0 == len(giftid) or 0 == cmp(giftid,stugiftrs.mszGiftUID))):
+                    return True,stugiftrs.miResult,stugiftrs.mi64UserId,stugiftrs.mi64DestUserId,stugiftrs.miCount,stugiftrs.mszGiftUID
+                
+        return False,0,0,0,0,""
+    
+    '''
+    public mic
+    '''
+   
+    def UserApplyPublicMic(self,mic_type):#1 is small mic,2 is large mic
+        apply_mic_rq = PackDefine.ApplyMicRQ();
+        apply_mic_rq.mi64UserID = self.mi64UserId;
+        apply_mic_rq.miMicType = mic_type;
+        
+        send_buff = apply_mic_rq.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.ApplyPublicMicResponse();
+    
+    def ApplyPublicMicResponse(self):
+        statrttime = time.time()
+        recvtimeout = 3
+        while(1):
+            if((time.time()-statrttime) > recvtimeout):
+                break
+            
+            (result,msg) = self.Waitfor(6024,1)
+            if(result):
+                apply_mic_rs = PackDefine.ApplyMicRS();
+                apply_mic_rs.UnPack(msg);
+
+                return apply_mic_rs.miResult,apply_mic_rs.mi64UserID,apply_mic_rs.miMicType,apply_mic_rs.miMicIndex;
+        return 0,0,0,0;
+    
+    def UserApplyPrivateMic(self,mic_type):
+        apply_mic_rq = PackDefine.ApplyPrivateMicRQ();
+        apply_mic_rq.mi64UserID = self.mi64UserId;
+        apply_mic_rq.miMicType = mic_type;
+        
+        send_buff = apply_mic_rq.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.ApplyPrivateMicResponse();
+    
+    def ApplyPrivateMicResponse(self):
+        statrttime = time.time()
+        recvtimeout = 3
+        while(1):
+            if((time.time()-statrttime) > recvtimeout):
+                break
+            
+            (result,msg) = self.Waitfor(6031,1)
+            if(result):
+                apply_mic_rs = PackDefine.ApplyPrivateMicRS();
+                apply_mic_rs.UnPack(msg);
+
+                return apply_mic_rs.miResult,apply_mic_rs.mi64UserID,apply_mic_rs.miMicType,apply_mic_rs.miMicIndex;
+        return 0,0,0,0;
+    
+    def UserPutPublicMic(self,dst_user_id,mic_type):
+        put_mic_rq = PackDefine.PutPublicMicRQ();
+        put_mic_rq.mi64ManagerID = self.mi64UserId;
+        put_mic_rq.mi64UserID = dst_user_id;
+        put_mic_rq.miMicType = mic_type;
+        
+        send_buff = put_mic_rq.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.PutPublicMicResponse();
+    
+    def PutPublicMicResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(6027, 1);
+            if result == True:
+                put_mic_rs = PackDefine.PutPublicMicRS();
+                put_mic_rs.Unpack(msg);
+                return put_mic_rs.miResult,put_mic_rs.mi64ManagerID,put_mic_rs.mi64UserID,put_mic_rs.miMicIndex,put_mic_rs.miMicType;
+        return 0,0,0,0,0;
+    
+    def UserPutPrivateMic(self,dst_user_id,mic_type):
+        put_private_mic_rq = PackDefine.PutPrivateMicRQ();
+        put_private_mic_rq.mi64ManagerID = self.mi64UserId;
+        put_private_mic_rq.mi64UserID = dst_user_id;
+        put_private_mic_rq.miMicType = mic_type;
+        
+        send_buff = put_private_mic_rq.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.PutPrivateMicResponse();
+    
+    def PutPrivateMicResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(6039, 1);
+            if result == True:
+                put_mic_rs = PackDefine.PutPrivateMicRS();
+                put_mic_rs.Unpack(msg);
+                return put_mic_rs.miResult,put_mic_rs.mi64ManagerID,put_mic_rs.mi64UserID,put_mic_rs.miMicIndex,put_mic_rs.miMicType;
+        return 0,0,0,0,0;
+    
+    '''
+    not finished
+    '''
+    def UserInvitePrivateMic(self,invited_user_id,time_out):
+        invite_private_mic = PackDefine.InvitePrivateMicRQ();
+        invite_private_mic.mi64UserID = self.mi64UserId;
+        invite_private_mic.mi64DstUserID = invited_user_id;
+        invite_private_mic.miTimeout = time_out;
+        
+        send_buff = invite_private_mic.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.InvitePrivateMicRS();
+
+'''
+two kinds
+1,this client is inviting player;
+2,this client is invited player;
+'''
+    def UserAgreeInvitePrivateMic(self,invite_user_id,mic_result):
+        invite_private_mic = PackDefine.InvitePrivateMicRS();
+        invite_private_mic.mi64UserID = self.mi64UserId;
+        invite_private_mic.mi64DstUserID = invite_user_id;
+        invite_private_mic.miTimeout = time_out;
+        
+        send_buff = invite_private_mic.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.InvitePrivateMicRS();
+
+ 
+    def UserGetOtherIP(self,dst_user_id):
+        get_user_ip = PackDefine.GetUserIPRQ();
+        get_user_ip.mi64UserID = self.mi64UserId;
+        get_user_ip.mi64DstUserID = dst_user_id;
+        
+        send_buff = get_user_ip.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.GetUserIPResponse();
+    
+    def GetUserIPResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(6078, 1);
+            if result == True:
+                get_ip_rs = PackDefine.GetUserIPRS();
+                get_ip_rs.Unpack(msg);
+                return get_ip_rs.mi64DstUserID,get_ip_rs.mszDstUserIP,get_ip_rs.mszDstUserAddr;
+        return 0,'','';
+    
+    def UserKickOutRoom(self,dst_user_id):
+        kick_user_out = PackDefine.KickOutRoomRQ();
+        kick_user_out.mi64UserID = self.mi64UserId;
+        kick_user_out.mi64DstUserID = dst_user_id;
+        kick_user_out.mlRoomID = self.mlRoomId;
+        
+        send_buff = kick_user_out.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.KickUserOutRoomResponse();
+    
+    def KickUserOutRoomResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(6066, 1);
+            if result == True:
+                kick_user_rs = PackDefine.KickOutRoomRS();
+                kick_user_rs.Unpack(msg);
+                return kick_user_rs.miResult,kick_user_rs.mi64DstUserID,kick_user_rs.mlRoomID;
+        return 0,0,0;
+    
+    def UserDealBlackman(self,dst_user_id,op_type):
+        black_man_rq = PackDefine.RoomBlackListRQ();
+        black_man_rq.mi64ManagerID = self.mi64UserId;
+        black_man_rq.mi64UserID = dst_user_id;
+        black_man_rq.mlRoomID = self.mlRoomId;
+        black_man_rq.miOperator = op_type;
+        
+        send_buff = black_man_rq.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.DealBlackmanResponse();
+    
+    def DealBlackmanResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(6052, 1);
+            if result == True:
+                black_man_rs = PackDefine.RoomBlackListRS();
+                black_man_rs.Unpack(msg);
+                return black_man_rs.miResult,black_man_rs.mi64UserID,black_man_rs.mlRoomID,black_man_rs.mszBlackUserName;
+        return 0,0,0,'';
+    
+    def UserPlayDiceGame(self):
+        dice_game = PackDefine.UserDiceGameRQ();
+        dice_game.mi64UserID = self.mi64UserId;
+        
+        send_buff = dice_game.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.PlayDiceGameResponse();
+    def PlayDiceGameResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(5051, 1);
+            if result == True:
+                dice_game_rs = PackDefine.UserDiceGameID();
+                dice_game_rs.Unpack(msg);
+                return dice_game_rs.miResult,dice_game_rs.mi64UserID,dice_game_rs.miRand;
+        return 0,0,0;
+    
+    def UserSmashGoldEgg(self):
+        smash_egg = PackDefine.UserSmashGoldEggRQ();
+        smash_egg.mi64UserID = self.mi64UserId;
+        smash_egg.mlRoomID = self.mlRoomId;
+        
+        send_buff = smash_egg.Pack();
+        self.SendPacket(send_buff);
+        
+        return self.SmashGoldEggResponse();
+        
+    def  SmashGoldEggResponse(self):
+        start_time = time.time();
+        while True:
+            if time.time() - start_time > 3:
+                break;
+            (result,msg) = self.Waitfor(6515, 1);
+            if result == True:
+                smash_egg_rs = PackDefine.UserSmashGoldEggRS();
+                smash_egg_rs.Unpack(msg);
+                return smash_egg_rs.miResult,smash_egg_rs.miCountEggs,smash_egg_rs.mi64GotCumoney,smash_egg_rs.mi64UserCumoney;
+        return 0,0,0,0;
+       
+       
+       
+       
+        

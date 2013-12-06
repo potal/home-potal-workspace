@@ -1,0 +1,53 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import serialize
+class LoginRoomRS():
+    '''
+    classdocs
+    '''
+
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6013;
+        self.mbyResult = 0;
+        self.mi64UserId = 0;
+        self.mlRoomID = 0;
+        self.mszErrInfo = '';
+        self.mszVoiceIp = '';
+        self.musVoicePort = 0;
+        self.miUserPopdom = 0;
+        self.miRole = 0;
+        self.miRoleLevel = 0;
+        self.mi64Score = 0;
+        self.mi64CUMoney = 0;
+        self.miManageType = 0;
+        self.mlCityType = 0;
+        self.mszSealUID = '';
+        self.mszReserved = '';
+        self.mlRoomType = '';
+        self.mszUserGrade = '';
+        self.miCountEffects = 0;
+        self.mpUserEffects = 0;
+    
+    def Unpack(self,buff,buff_len):
+        unpacked_data = serialize.CSerialize(buff,buff_len,2);
+        self.mwMsgID = unpacked_data.SerializeWord(self.mwMsgID)
+        pass;
+    
+    def Execute(self,msg_id,buff,buff_len):
+        print 'LoginRoomRS.Execute';
+        
+        pass;
+    
+    
+    
+    
+    
+    
+    
+    
+    

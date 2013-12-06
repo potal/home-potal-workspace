@@ -1,0 +1,74 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import struct
+class CSerialize(object):
+    
+    def __init__(self,buff,buff_len,serialize_type):
+        self.serialize_type = serialize_type;
+        if serialize_type == 1:
+            self.buff = '';
+        else:
+            self.buff = buff;
+    
+    def SerializeByte(self,value):
+        if self.serialize_type == 1: 
+            self.buff += struct.pack('<?',value);
+            return len(self.buff);
+        else:
+            data = struct.unpack('<?',self.buff[0:1]);
+            self.buff = self.buff[1:];
+            return data[0];
+        
+    def SerializeWord(self,value):
+        if self.serialize_type == 1:
+            self.buff += struct.pack('<h',value);
+            return len(self.buff);
+        else:
+            print repr(self.buff);
+            data = struct.unpack('<h',self.buff[0:2]);
+            self.buff = self.buff[2:];
+            return data[0];
+      
+    def SerializeInteger(self,value):
+        if self.serialize_type == 1:
+            self.buff += struct.pack('<i',value);
+            return len(self.buff);
+        else:
+            data = struct.unpack('<i',self.buff[0:4]);
+            self.buff = self.buff[4:];
+            return data[0];
+        
+    def SerializeLong(self,value):
+        if self.serialize_type == 1:
+            self.buff += struct.pack('<l',value);
+            return len(self.buff);
+        else:
+            data = struct.unpack('<l',self.buff[0:4]);
+            self.buff = self.buff[4:];
+            return data[0];
+        
+    def SerializeLongLong(self,value):
+        if self.serialize_type == 1:
+            self.buff += struct.pack('<q',value);
+            return len(self.buff);
+        else:
+            data = struct.unpack('<q',self.buff[0:8]);
+            self.buff = self.buff[8:];
+            return data[0];
+    
+    def SerializeString(self,value):
+        length = len(value);
+        msg_fmt = '<h{0}s'.format(length);
+        
+        if self.serialize_type == 1:
+            self.buff += struct.pack(msg_fmt,length,value);
+            return len(self.buff);
+        else:
+            data = struct.unpack(msg_fmt,self.buff[0:2+length]);
+            self.buff = self.buff[2+length:];
+            return data[0];
+    
+    

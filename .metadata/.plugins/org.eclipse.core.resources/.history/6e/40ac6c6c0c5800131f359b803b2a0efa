@@ -1,0 +1,43 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import pickle
+import struct
+
+class ChatMessage():
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        self.room_id = room_id;
+        self.user_id = user_id;
+        '''
+        
+    def Pack(self,room_id,user_id,msg_text,user_talk_to,is_private):
+        '''
+        f = file("log.txt",'w');
+        pickle.dump(self,f);
+        f.close();
+        '''
+        mlRoomId = room_id;
+        mi64UserId = user_id;
+        mi64DestUserId;
+        mbPrivate;
+        miResult;
+        miCount;
+        mszText;
+        mlReserved;
+        
+        pack_fmt = '<hlqq?llsl';
+        
+        packet_body = struct.pack(pack_fmt,msg_id,room_id,user_id,dst_user_id,is_private,result,count,msg_text,reversed_d);
+
+        return packet_body,len(packet_body);
+    
+    def SendMessage(self,room_id,user_id,msg_text,user_talk_to,is_private):

@@ -1,0 +1,67 @@
+'''
+Created on Dec 3, 2013
+
+@author: potal
+'''
+
+class GiveGiftRQ(object):
+
+
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6044;
+        self.mlRoomId = 0;
+        self.mi64UserId = 0;
+        self.mi64DstUserId = 0;
+        self.mszHeroUID = '';
+        self.mszUserName = '';
+        self.mszDstUserName = '';
+
+        self.mszMsgUtf8 = '';
+
+        self.mszGiftUID = '';
+        self.miContractId = 0;
+        self.miBegin = 0;
+        self.miCount = 0;
+        self.miTotal = 0;
+        self.miReserved = 0;
+        
+        
+class GiveGiftRS(object):
+    def __init__(self,client):
+        self.client = client;
+        
+        self.mwMsgID = 6045;
+        self.mlRoomId;                            // ·¿ŒäID
+   self.mi64UserId;                            // ËÍÀñÈË
+    self.mi64DstUserId;                        // ÊÜÀñÈË
+    self.mszUserName[USER_NAME_LEN+1];        // ËÍÀñÈËêÇ³Æ
+    self.mszDstUserName[USER_NAME_LEN+1];    // ±»ËÍÕßêÇ³Æ
+
+    self.mszMsgUtf8[256];                    // ËÍÀñÁôÑÔ¡ª¡ª¡ª¡ª¡ª¡ª3.9.4ÌíŒÓ
+
+    self.mszGiftUID[MAX_UID_LEN];            // ÀñÆ·ID
+    self.mwGiftType;                            // ÀñÎïÀàÐÍ£¬1ÎªŽóÀñÎï£¬2ÎªÆÕÍšÀñÎï
+    self.miResult;                            // 1 ³É¹Š
+
+    self.mi64ContractId;                        // ÊýŸÝ¿âŒÇÂŒµÄ×Ô¶¯ID¡£ºÏÍ¬ºÅ
+    LONG    miBegin;                            // ÒÑŸ­ËÍ³öµÄžöÊý
+    LONG    miCount;                            // ±ŸŽÎËÍÀñÊýÁ¿
+    LONG    miTotal;                            // ×ÜÁ¿
+    __int64 mi64LeftPoints;
+    __int64 mi64LeftGolden;
+    __int64 mi64PaidGolden;                        // ¿Û³ö
+    __int64 mi64PaidPoints;                        // ¿Û³ö
+
+    __int64 mi64DstLeftPoints;
+    __int64 mi64DstLeftGolden;
+    __int64 mi64DstGotPoints;                    // µÃµœ
+    __int64 mi64DstGotGolden;                    // µÃµœ
+    __int64 mi64LuckyGolden;                    // ÐÒÔËœ±œð 0 ±íÊŸÃ»ÓÐÖÐœ±  ŽóÓÚ0±íÊŸÖÐœ±
+    
+    LONG    miDisplayPlace;                        //
+    LONG    mlGiftCount;                        // ÀñÎïÊýÁ¿
+    time_t    mlTime;
+    
+        

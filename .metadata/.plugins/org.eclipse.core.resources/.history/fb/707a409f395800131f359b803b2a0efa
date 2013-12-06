@@ -1,0 +1,21 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+
+class CSerialize(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,type):
+        '''
+        Constructor
+        '''
+        self.type = type;
+        self.buff = '';
+        
+    def Serialize(self,integer):
+        

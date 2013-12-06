@@ -1,0 +1,23 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+#import os
+#import time
+import socket
+
+class MyConnection(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def ConnectServer(self,server_addr,server_port):
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM);
+        s.connect("192.168.1.125",8155);
+        

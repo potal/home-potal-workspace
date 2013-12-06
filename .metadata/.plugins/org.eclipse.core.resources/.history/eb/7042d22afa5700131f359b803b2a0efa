@@ -1,0 +1,27 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+#!usr/bin/python
+import connection
+import baseclass
+import chatmessage
+
+if __name__ == '__main__':
+    print 'start';
+    '''
+    mk_test = connection.MyConnection();
+    mk_test.ConnectServer('192.168.1.125',8125);
+    mk_test.SendData("safsdfa",7);
+    mk_test.Close();
+    '''
+    msg = baseclass.BaseClass();
+    out_buff = '';
+    buff_len = 100;
+    msg.Pack(out_buff, buff_len)
+    
+    text_msg = chatmessage.ChatMessage();
+    buff_len = text_msg.Pack(out_buff, buff_len);
+    print repr(out_buff),buff_len
+    print 'end';

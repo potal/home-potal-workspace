@@ -1,0 +1,9 @@
+MODULES_MANAGER_V2
+com.__init__|/home/potal/workspace/miku_test/com/__init__.py
+com.miku_test.PackDefine|/home/potal/workspace/miku_test/com/miku_test/PackDefine.py
+com.miku_test.__init__|/home/potal/workspace/miku_test/com/miku_test/__init__.py
+com.miku_test.miku|/home/potal/workspace/miku_test/com/miku_test/miku.py
+com.miku_test.mikuktv|/home/potal/workspace/miku_test/com/miku_test/mikuktv.py
+com.miku_test.mikupackdef|/home/potal/workspace/miku_test/com/miku_test/mikupackdef.py
+com.miku_test.testcase1|/home/potal/workspace/miku_test/com/miku_test/testcase1.py
+com.miku_test.utils|/home/potal/workspace/miku_test/com/miku_test/utils.py

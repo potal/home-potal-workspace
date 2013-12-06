@@ -1,0 +1,55 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import baseclass
+import struct
+import hashlib
+
+class LoginRoom(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def Pack(self,room_id,user_id,password,nick_name=''):
+        mwTypeID = 6001 
+        mszVersion = "501"
+        mlRoomID = room_id
+        mi64UserId = user_id
+        mszNickName = nick_name
+        mwPhotoNum = 0
+        mszPassword= ""
+        mbySource = 0
+        mlUserState = 0
+        mszUserPwd = hashlib.md5(password).hexdigest()
+        mbyUserLanguage = 0
+        mszPhotoUID = ""
+        mszMacAddr = ""
+        mszMCode = ""
+        mszAccountUID =""
+        
+        packet_fmt = '<hh{0}siqh{1}shh{2}sblh{3}sbh{4}sh{5}sh{6}sh{7}s'.format(len(mszVersion),len(mszNickName),len(mszPassword),\
+                                                                               len(mszUserPwd),len(mszPhotoUID),len(mszMacAddr),\
+                                                                               len(mszMCode),len(mszAccountUID));
+        packet_body = struct.pack(packet_fmt,mwTypeID,len(mszVersion),mszVersion,mlRoomID,mi64UserId,len(mszNickName),mszNickName,\
+                                  mwPhotoNum,len(mszPassword),mszPassword,mbySource,mlUserState,len(mszUserPwd),mszUserPwd,\
+                                  mbyUserLanguage,len(mszPhotoUID),mszPhotoUID,len(mszMacAddr),mszMacAddr,len(mszMCode),mszMCode,\
+                                  len(mszAccountUID),mszAccountUID);
+                                  
+        base_class = baseclass.BaseClass();
+        
+        base_class.Pack(packet_body, len(packet_body));
+        
+        pack_test = struct.pack('<3s','asa');
+        pack_test += struct.pack('<3s','fds');
+        print pack_test;
+    
+    def LoginRoom(self,room_id,user_id,password,nick_name=''):
+        self.Pack(room_id,user_id,password,nick_name);
+        

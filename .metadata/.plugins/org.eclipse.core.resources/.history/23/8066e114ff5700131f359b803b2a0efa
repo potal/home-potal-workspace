@@ -1,0 +1,42 @@
+'''
+Created on Nov 28, 2013
+
+@author: potal
+'''
+import baseclass
+import struct
+import hashlib
+
+class LoginRoom(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def Pack(self,room_id,user_id,password,nick_name=''):
+        mwTypeID = 6001 
+        mszVersion = "500"
+        mlRoomID = room_id
+        mi64UserId = user_id
+        mszNickName = nick_name
+        mwPhotoNum = 0
+        mszPassword= ""
+        mbySource = 0
+        mlUserState = 0
+        mszUserPwd = hashlib.md5(password).hexdigest()
+        mbyUserLanguage = 0
+        mszPhotoUID = ""
+        mszMacAddr = ""
+        mszMCode = ""
+        mszAccountUID =""
+        
+        packet_fmt = '<hhsiqhshhs'
+        packet_body = 
+    
+    def LoginRoom(self,room_id,user_id,password,nick_name=''):
+        self.Pack(room_id,user_id,password,nick_name);
+        
