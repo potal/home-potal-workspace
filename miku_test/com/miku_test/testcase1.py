@@ -132,6 +132,10 @@ class TestCase1(unittest.TestCase):
             self.assertTrue(False)
         
         '''
+        上公麦
+        参数：1表示上小麦，2表示上大麦
+        
+        返回值：
         ret_result： 0失败,1进入麦序,2成功上麦
         user_id： 排麦的用户
         mic_type： 当ret_result=1时，为麦序类型，当=2时为上麦用户
@@ -144,11 +148,92 @@ class TestCase1(unittest.TestCase):
         (ret_result1,user_id1,mic_type1,mic_index1) = user2.UserApplyPublicMic(1);
         print ret_result1,user_id1,mic_type1,mic_index1;
 
+        '''
+        下麦
+        '''
         user1.UserStopSpeak();
         time.sleep(1);
         user2.UserStopSpeak();
         
-        user1.UserPutPublicMic(user2.mi64UserId,1);
+        '''
+        抱公麦
+        参数：第一个参数：被抱人ID 第二个参数：被抱麦的类型，1小麦，2大麦
+        
+        返回值：
+        ret_result:抱麦结果，1为成功，非1失败
+        manager_id:抱麦人ID 
+        user_id:被抱麦人ID
+        mic_index:抱麦的序号
+        mic_type:麦的类型
+        '''
+        (ret_result,manager_id,user_id,mic_index,mic_type) = user1.UserPutPublicMic(user2.mi64UserId,1);
+        print ret_result,manager_id,user_id,mic_index,mic_type;
+        time.sleep(2);
+        if ret_result == 1:
+            user2.UserStopSpeak();
+        
+        '''
+        抱私麦
+        参数返回值与抱公麦一致，不赘述
+        '''
+        (ret_result,manager_id,user_id,mic_index,mic_type) = user1.UserPutPrivateMic(user2.mi64UserId, 1);
+        print ret_result,manager_id,user_id,mic_index,mic_type;
+        time.sleep(2);
+        
+        '''
+        如果成功被抱私麦，那么邀请某个人(比如92002)观看私麦
+        '''
+        if ret_result == 1:
+            '''
+            邀请观看私麦
+            参数：第一参数：被邀请人ID ，第二参数：超时时间
+            返回值：
+            result:邀请是否成功
+            manager_id:邀请人ID
+            user_id:被邀请人ID
+            '''
+            
+            (result,manager_id,user_id) = user2.UserInvitePrivateMic(user1.mi64UserId, 120);
+            print result,manager_id,user_id;
+        
+        '''
+        是否同意邀请
+        参数：第一参数：邀请人ID ，第二参数，1同意，2不同意
+        返回值 与上函数相同，不再赘述
+        '''
+        (result,manager_id,user_id) = user1.UserAgreeInvitePrivateMic(user2.mi64UserId,1);
+        print result,manager_id,user_id;
+        
+        '''
+        查看IP
+        参数：被查询者的ID
+        返回值：被查询者ID，被查询者IP，被查询者地址(为空正确)
+        '''
+        (dst_user_id,user_ip,user_addr) = user1.UserGetOtherIP(user2.mi64UserId);
+        print dst_user_id,user_ip,user_addr;
+        
+        '''
+        踢人
+        参数：被踢者ID
+        返回值：是否被踢成功：1成功，非1失败  被踢者ID  房间ID
+        '''
+        (ret_result,dst_user_id,room_id) = user1.UserKickOutRoom(user2.mi64UserId);
+        print ret_result,dst_user_id,room_id;
+        
+        '''
+        丢骰子
+        返回值:是否成功，游戏者ID，骰子点数
+        '''
+        (ret_result,user_id,rand_num) = user1.UserPlayDiceGame();
+        print ret_result,user_id,rand_num;
+        
+        '''
+        砸金蛋游戏
+        返回值：砸蛋结果，剩余金蛋数量，获得的酷币，用户最后的酷币
+        '''
+        (ret_result,count_eggs,got_money,all_money) = user1.UserSmashGoldEgg();
+        print ret_result,count_eggs,got_money,all_money;
+        
         print("Success")
         self.assertTrue(True)
         
